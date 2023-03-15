@@ -1,60 +1,109 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Prashil Shah</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
-    <header>
-      <h1>My Web Portfolio</h1>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section id="about">
-        <h2>About Me</h2>
-        <p>Write a brief introduction about yourself here.</p>
-      </section>
-      <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-          <li>PHP</li>
-          <li>MySQL</li>
-        </ul>
-      </section>
-      <section id="projects">
-        <h2>Projects</h2>
-        <ul>
-          <li><a href="#">Project 1</a></li>
-          <li><a href="#">Project 2</a></li>
-          <li><a href="#">Project 3</a></li>
-        </ul>
-      </section>
-      <section id="contact">
-        <h2>Contact Me</h2>
-        <form>
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" required></textarea>
-          <button type="submit">Send</button>
-        </form>
-      </section>
-    </main>
-    <footer>
-      <p>&copy; 2023 My Web Portfolio</p>
-    </footer>
-    <script src="script.js"></script>
-  </body>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slider Carousel Version temp</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <input type="radio" name="slider" id="s1" checked>
+    <input type="radio" name="slider" id="s2">
+    <input type="radio" name="slider" id="s3">
+    <input type="radio" name="slider" id="s4">
+    <input type="radio" name="slider" id="s5">
+
+    <div class="cards">
+
+      <label for="s1" id="slide1">
+        <div class="card">
+          <div class="image">
+            <img src="img/red.jpeg" alt="Red shoes">
+          </div>
+          
+          <div class="infos">
+            <span class="name">Red Shoes</span>
+            <span class="lorem">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum neque voluptatem illum necessitatibus animi tempore asperiores sapiente omnis, eum nisi maiores in veritatis eveniet laudantium voluptatum eaque voluptates architecto obcaecati.</span>
+
+            <a href="/details" class="btn-details">Details</a>
+
+          </div>
+        </div>
+      </label>
+
+      <label for="s2" id="slide2">
+        <div class="card">
+          <div class="image">
+            <img src="img/black.jpeg" alt="Black shoes">
+          </div>
+          
+          <div class="infos">
+            <span class="name">Black Shoes</span>
+            <span class="lorem">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum neque voluptatem illum necessitatibus animi tempore asperiores sapiente omnis, eum nisi maiores in veritatis eveniet laudantium voluptatum eaque voluptates architecto obcaecati.</span>
+
+            <a href="/details" class="btn-details">Details</a>
+
+          </div>
+        </div>
+      </label>
+
+      <label for="s3" id="slide3">
+        <div class="card">
+          <div class="image">
+            <img src="img/blue.jpg" alt="Blue shoes">
+          </div>
+          
+          <div class="infos">
+            <span class="name">Blue Shoes</span>
+            <span class="lorem">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum neque voluptatem illum necessitatibus animi tempore asperiores sapiente omnis, eum nisi maiores in veritatis eveniet laudantium voluptatum eaque voluptates architecto obcaecati.</span>
+
+            <a href="/details" class="btn-details">Details</a>
+
+          </div>
+        </div>
+      </label>
+
+      <label for="s4" id="slide4">
+        <div class="card">
+          <div class="image">
+            <img src="img/green.jpeg" alt="Green shoes">
+          </div>
+          
+          <div class="infos">
+            <span class="name">Green Shoes</span>
+            <span class="lorem">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum neque voluptatem illum necessitatibus animi tempore asperiores sapiente omnis, eum nisi maiores in veritatis eveniet laudantium voluptatum eaque voluptates architecto obcaecati.</span>
+
+            <a href="/details" class="btn-details">Details</a>
+
+          </div>
+        </div>
+      </label>
+
+      <label for="s5" id="slide5">
+        <div class="card">
+          <div class="image">
+            <img src="img/white.jpeg" alt="White shoes">
+          </div>
+          
+          <div class="infos">
+            <span class="name">White Shoes</span>
+            <span class="lorem">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum neque voluptatem illum necessitatibus animi tempore asperiores sapiente omnis, eum nisi maiores in veritatis eveniet laudantium voluptatum eaque voluptates architecto obcaecati.</span>
+
+            <a href="/details" class="btn-details">Details</a>
+
+          </div>
+        </div>
+      </label>
+
+    </div>
+  </div>
+
+</body>
+
 </html>
