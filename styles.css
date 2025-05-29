@@ -62,8 +62,7 @@ to {
 body {
   margin: 0;
   height: 100vh;
-  background-color: #000;
-  /* Black for loading screen */
+  background-color: #000; /* Black for loading screen */
   overflow: hidden;
   cursor: url('Images/mouse-pointer.cur'), auto;
 }
@@ -75,8 +74,7 @@ a {
 
 #page-content {
   font-family: 'Press Start 2P', cursive;
-  background-color: #ffe4e1;
-  /* Pink retro color */
+  background-color: #ffe4e1; /* Pink retro color */
   color: #000;
   display: flex;
   justify-content: center;
