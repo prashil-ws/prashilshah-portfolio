@@ -169,7 +169,27 @@ h1 {
   color: #2d2d2d;
   text-shadow: 3px 3px #b19cd9;
   margin-bottom: 3rem;
-  font-size: 2.5rem
+  font-size: 2.5rem;
+}
+
+.no-select {
+    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none;     /* IE10+ */
+}
+
+#title span {
+  display: inline-block;
+  transition: color 0.3s;
+  cursor: url('Images/mouse-pointer.cur'), auto;
+}
+
+#title span:hover {
+  transform: translateY(-4px);
+}
+
+#title span.pop {
+  transform: translateY(-4px);
 }
 
 nav {
@@ -242,16 +262,6 @@ flex-direction: column;
 align-items: center;
 } */
 
-#title span {
-  display: inline-block;
-  transition: color 0.3s;
-  cursor: url('Images/mouse-pointer.cur'), auto;
-}
-
-#title span:hover {
-  transform: translateY(-4px);
-}
-
 .social-bar a,
 .download-link {
   text-shadow: none;
@@ -281,6 +291,44 @@ align-items: center;
   z-index: 10002;
   /* above all content */
 }
+
+.scanlines-boost {
+  z-index: 10003;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0.1) 1px,
+    rgba(0, 0, 0, 0.4) 2px,
+    rgba(0, 0, 0, 0) 3px
+  );
+  opacity: 0;
+  pointer-events: none;
+  mask-image: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(0, 0, 0, 0.5) 30px,
+    rgba(0, 0, 0, 0.25) 80px,
+    rgba(0, 0, 0, 0.1) 130px,
+    rgba(0, 0, 0, 0) 160px
+  );
+  -webkit-mask-image: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(0, 0, 0, 0.5) 30px,
+    rgba(0, 0, 0, 0.25) 80px,
+    rgba(0, 0, 0, 0.1) 130px,
+    rgba(0, 0, 0, 0) 160px
+  );
+  mask-repeat: no-repeat;
+  mask-size: 100vw 100vh;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100vw 100vh;
+  transition: mask-image 0.2s ease, -webkit-mask-image 0.2s ease;
+}
+
 
 .crt-loader {
   position: fixed;
@@ -360,122 +408,127 @@ transition: opacity 0.3s ease;
 /* Media Queries */
 
 @media (max-width: 600px) {
-body {
-  overflow-y: auto; /* allow scrolling on mobile */
-}
+  body {
+    overflow-y: auto; /* allow scrolling on mobile */
+  }
 
-#page-content {
-  flex-direction: column;
-  height: 100vh;
-  /* padding: 1rem; */
-}
+  #page-content {
+    flex-direction: column;
+    height: 100vh;
+    /* padding: 1rem; */
+  }
 
-.popup-container {
-padding: 10vw 8vw; /* Use responsive padding */
-max-width: 90vw; /* Slightly larger width on mobile */
-width: 100%;
-box-sizing: border-box;
-border-radius: 8px;
-max-height: 90vh; /* Prevents overflow on small screens */
-overflow-y: auto; /* Enables scrolling if content is tall */
-}
-
-h1 {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-}
-
-nav {
-  flex-direction: column;
-  gap: 0.8rem;
-  margin-bottom: 1.5rem;
-}
-
-nav a {
-  padding: 0.75rem 1rem;
-  font-size: 0.85rem;
-  border-radius: 6px;
-}
-
-.social-bar {
-  /* top: auto;
-  bottom: 1rem;
-  right: 1rem; */
-  gap: 1rem;
-  font-size: 0.8rem;
-}
-
-.social-bar a {
-  padding: 0.2rem 0.4rem;
-}
-
-.social-bar .icon-only {
-  display: inline;
-}
-
-.social-bar .text-only {
-  display: none;
-}
-
-.social-bar .social-link {
-  /* justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: 0; */    
-  font-size: 1rem;
-  padding: 0.2rem 0.4rem;    
-  background-color: #fff8dc;
-  border: 2px solid #2d2d2d;
-  border-radius: 5px;
-  box-shadow: 3px 3px #000;
-  text-decoration: none;
-}
-
-.logo-box {
-  top: 1rem;
-  /* left: 1rem; */
-  padding: 0.3rem 0.6rem;
-  /* font-size: 0.7rem; */
-}
-
-.download-link {
-  bottom: 0.7rem;
-  right: 1rem;
-  font-size: 0.8rem;
-  padding: 0.2rem 0.4rem;
-  position: fixed;
-  background-color: #fff8dc;
-  border: 2px solid #2d2d2d;
-  border-radius: 5px;
-  box-shadow: 3px 3px #000;
-}
-
-#title span {
-  font-size: 2.2rem;
-}
-
-.popup-window {
-  padding: 2rem 1.5rem;
-  max-width: 95vw;
-  max-height: 80vh;
-  font-size: 0.85rem;
+  .popup-container {
+  padding: 10vw 8vw; /* Use responsive padding */
+  max-width: 90vw; /* Slightly larger width on mobile */
+  width: 100%;
+  box-sizing: border-box;
   border-radius: 8px;
-}
+  max-height: 90vh; /* Prevents overflow on small screens */
+  overflow-y: auto; /* Enables scrolling if content is tall */
+  }
 
-.close-btn {
-  font-size: 1.2rem;
-  top: 0.4rem;
-  right: 0.5rem;
-  border: 1px solid #2d2d2d;
-  border-radius: 3px;
-  box-shadow: 2px 2px #000;
-}
+  h1 {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
 
-.scanlines {
-  opacity: 0.1;
-}
+  nav {
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
 
-.logo-box:hover .tooltip {
-display: none;
-}
+  nav a {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 6px;
+  }
+
+  .social-bar {
+    /* top: auto;
+    bottom: 1rem;
+    right: 1rem; */
+    gap: 1rem;
+    font-size: 0.8rem;
+  }
+
+  .social-bar a {
+    padding: 0.2rem 0.4rem;
+  }
+
+  .social-bar .icon-only {
+    display: inline;
+  }
+
+  .social-bar .text-only {
+    display: none;
+  }
+
+  .social-bar .social-link {
+    /* justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0; */    
+    font-size: 1rem;
+    padding: 0.2rem 0.4rem;    
+    background-color: #fff8dc;
+    border: 2px solid #2d2d2d;
+    border-radius: 5px;
+    box-shadow: 3px 3px #000;
+    text-decoration: none;
+  }
+
+  .logo-box {
+    top: 1rem;
+    /* left: 1rem; */
+    padding: 0.3rem 0.6rem;
+    /* font-size: 0.7rem; */
+  }
+
+  .download-link {
+    bottom: 0.7rem;
+    right: 1rem;
+    font-size: 0.8rem;
+    padding: 0.2rem 0.4rem;
+    position: fixed;
+    background-color: #fff8dc;
+    border: 2px solid #2d2d2d;
+    border-radius: 5px;
+    box-shadow: 3px 3px #000;
+  }
+
+  #title span {
+    font-size: 2.2rem;
+  }
+
+  .popup-window {
+    padding: 2rem 1.5rem;
+    max-width: 95vw;
+    max-height: 80vh;
+    font-size: 0.85rem;
+    border-radius: 8px;
+  }
+
+  .close-btn {
+    font-size: 1.2rem;
+    top: 0.4rem;
+    right: 0.5rem;
+    border: 1px solid #2d2d2d;
+    border-radius: 3px;
+    box-shadow: 2px 2px #000;
+  }
+
+  .scanlines {
+    opacity: 0.1;
+  }
+
+  .logo-box:hover .tooltip {
+  display: none;
+  }
+
+  .scanlines-boost {
+    display: none !important;
+  }
+  
 }
