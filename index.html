@@ -1,60 +1,102 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Prashil Shah</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
-    <header>
-      <h1>My Web Portfolio</h1>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section id="about">
-        <h2>About Me</h2>
-        <p>Write a brief introduction about yourself here.</p>
-      </section>
-      <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-          <li>PHP</li>
-          <li>MySQL</li>
-        </ul>
-      </section>
-      <section id="projects">
-        <h2>Projects</h2>
-        <ul>
-          <li><a href="#">Project 1</a></li>
-          <li><a href="#">Project 2</a></li>
-          <li><a href="#">Project 3</a></li>
-        </ul>
-      </section>
-      <section id="contact">
-        <h2>Contact Me</h2>
-        <form>
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" required></textarea>
-          <button type="submit">Send</button>
-        </form>
-      </section>
-    </main>
-    <footer>
-      <p>&copy; 2023 My Web Portfolio</p>
-    </footer>
-    <script src="script.js"></script>
-  </body>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="icon" href="Images/title-logo.png" type="image/png">
+
+        <title>Prashil Shah</title>  
+    </head>
+    <body>
+        <div class="crt-loader">
+            <div class="crt-line"></div>
+        </div>
+        <div id="page-content" style="opacity: 0;">
+            <div class="scanlines"></div>            
+            <div id="maincontent">
+                <div class="logo-box">
+                    PS
+                    <span class="tooltip">Designed by Prashil Shah</span>
+                </div>
+
+                <div class="social-bar">
+                    <a href="https://github.com/prashilshah98/" target="_blank" class="social-link">
+                        <i class="fab fa-github icon-only"></i>
+                        <span class="text-only">GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/prashil-shah-098/" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin-in icon-only"></i>
+                        <span class="text-only">LinkedIn</span>
+                    </a>
+                </div>
+
+                <div class="popup-container">                                
+
+                    <h1 id="title">
+                        <div class="title-word">
+                            <span>P</span><span>R</span><span>A</span><span>S</span><span>H</span><span>I</span><span>L</span>
+                        </div>
+                        <div class="title-word">
+                            <span>S</span><span>H</span><span>A</span><span>H</span>
+                        </div>
+                    </h1>
+
+                    <nav>
+                        <a href="#">About</a>
+                        <a href="#">Experience</a>
+                        <a href="#">Projects</a>
+                        <a href="#">Contact</a>
+                    </nav>
+                    <a class="download-link" href="#" download>Download Resume</a>
+                </div>
+            </div>
+
+            <div class="overlay" id="popupOverlay">
+                <div class="popup-window">
+                    <button class="close-btn" id="closePopup">&times;</button>
+                    <div class="popup-content" id="popupAbout" style="display:none;">
+                        <h2>About Me</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nulla enim. Aenean ac sem mattis, dapibus diam eu, scelerisque neque. Integer rhoncus lorem sit amet commodo viverra. Nulla non nulla eget ipsum bibendum mollis. Praesent egestas dolor ut nulla laoreet auctor. Aliquam maximus mauris eu justo sodales commodo. Donec rhoncus aliquam eros, sed molestie lorem. Nullam fringilla, nulla ac pellentesque eleifend, ipsum magna malesuada lorem, eu ornare leo ipsum vitae felis. Donec mauris urna, congue in sapien et, ultrices ultrices ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam consequat risus at dignissim sagittis. Nullam a ultricies odio. In sit amet vehicula ante, in placerat ex. Nullam nec fermentum nibh.
+
+Etiam rhoncus magna nisl, eget convallis nunc porttitor non. Nullam sagittis quis justo et gravida. Nulla tristique condimentum est. Curabitur euismod fringilla justo quis interdum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce malesuada sem ut porttitor consectetur. Aliquam dictum ullamcorper iaculis.
+                        </p>
+                    </div>
+                    
+                    <div class="popup-content" id="popupExperience" style="display:none;">
+                        <h2>Experience</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nulla enim. Aenean ac sem mattis, dapibus diam eu, scelerisque neque. Integer rhoncus lorem sit amet commodo viverra. Nulla non nulla eget ipsum bibendum mollis. Praesent egestas dolor ut nulla laoreet auctor. Aliquam maximus mauris eu justo sodales commodo. Donec rhoncus aliquam eros, sed molestie lorem. Nullam fringilla, nulla ac pellentesque eleifend, ipsum magna malesuada lorem, eu ornare leo ipsum vitae felis. Donec mauris urna, congue in sapien et, ultrices ultrices ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam consequat risus at dignissim sagittis. Nullam a ultricies odio. In sit amet vehicula ante, in placerat ex. Nullam nec fermentum nibh.
+
+Etiam rhoncus magna nisl, eget convallis nunc porttitor non. Nullam sagittis quis justo et gravida. Nulla tristique condimentum est. Curabitur euismod fringilla justo quis interdum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce malesuada sem ut porttitor consectetur. Aliquam dictum ullamcorper iaculis.
+                        </p>
+                    </div>
+                    
+                    <div class="popup-content" id="popupProjects" style="display:none;">
+                        <h2>Projects</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nulla enim. Aenean ac sem mattis, dapibus diam eu, scelerisque neque. Integer rhoncus lorem sit amet commodo viverra. Nulla non nulla eget ipsum bibendum mollis. Praesent egestas dolor ut nulla laoreet auctor. Aliquam maximus mauris eu justo sodales commodo. Donec rhoncus aliquam eros, sed molestie lorem. Nullam fringilla, nulla ac pellentesque eleifend, ipsum magna malesuada lorem, eu ornare leo ipsum vitae felis. Donec mauris urna, congue in sapien et, ultrices ultrices ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam consequat risus at dignissim sagittis. Nullam a ultricies odio. In sit amet vehicula ante, in placerat ex. Nullam nec fermentum nibh.
+
+Etiam rhoncus magna nisl, eget convallis nunc porttitor non. Nullam sagittis quis justo et gravida. Nulla tristique condimentum est. Curabitur euismod fringilla justo quis interdum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce malesuada sem ut porttitor consectetur. Aliquam dictum ullamcorper iaculis.
+                        </p>
+                    </div>
+                    
+                    <div class="popup-content" id="popupContact" style="display:none;">
+                        <h2>Contact</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae nulla enim. Aenean ac sem mattis, dapibus diam eu, scelerisque neque. Integer rhoncus lorem sit amet commodo viverra. Nulla non nulla eget ipsum bibendum mollis. Praesent egestas dolor ut nulla laoreet auctor. Aliquam maximus mauris eu justo sodales commodo. Donec rhoncus aliquam eros, sed molestie lorem. Nullam fringilla, nulla ac pellentesque eleifend, ipsum magna malesuada lorem, eu ornare leo ipsum vitae felis. Donec mauris urna, congue in sapien et, ultrices ultrices ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam consequat risus at dignissim sagittis. Nullam a ultricies odio. In sit amet vehicula ante, in placerat ex. Nullam nec fermentum nibh.
+
+Etiam rhoncus magna nisl, eget convallis nunc porttitor non. Nullam sagittis quis justo et gravida. Nulla tristique condimentum est. Curabitur euismod fringilla justo quis interdum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce malesuada sem ut porttitor consectetur. Aliquam dictum ullamcorper iaculis.
+                        </p>
+                    </div>
+                </div>
+            </div>            
+        </div>        
+
+        <script src="script.js"></script>
+        
+    </body>
 </html>
