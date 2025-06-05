@@ -65,18 +65,10 @@ window.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => el.classList.remove('pop'), 300);
       }
     });
-  });
-
-  document.addEventListener('mousemove', (e) => {
-    const x = `${e.clientX}px`;
-    const y = `${e.clientY}px`;
-    boosted.style.setProperty('--x', x);
-    boosted.style.setProperty('--y', y);
-    //boosted.style.opacity = '0.1'; // fade in
-  });
+  });  
 
   document.addEventListener('mouseleave', () => {
     boosted.style.opacity = '0'; // fade out when mouse leaves screen
-  });
+  });  
 
 });
