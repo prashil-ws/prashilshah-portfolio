@@ -8,7 +8,6 @@ window.addEventListener('DOMContentLoaded', () => {
   const popupContents = document.querySelectorAll(".popup-content");
   const boosted = document.querySelector('.scanlines-boost');
 
-
   loader.addEventListener('animationend', () => {
     loader.style.display = 'none';
     pageContent.style.opacity = 1;
@@ -21,7 +20,7 @@ window.addEventListener('DOMContentLoaded', () => {
       popupContents.forEach(div => div.style.display = "none");
 
       // Show the one matching the clicked link text
-      const linkText = e.target.textContent.trim().toLowerCase();
+      const linkText = e.target.textContent.trim().split(" ")[0].toLowerCase();
       const popupDiv = document.getElementById("popup" + linkText.charAt(0).toUpperCase() + linkText.slice(1));
 
       if (popupDiv) popupDiv.style.display = "block";
@@ -70,5 +69,16 @@ window.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('mouseleave', () => {
     boosted.style.opacity = '0'; // fade out when mouse leaves screen
   });  
+
+  overlay.addEventListener('click', function (e) {
+    const popup = overlay.querySelector('.popup-window');
+    if (!popup.contains(e.target)) {
+      overlay.classList.remove("visible");
+      setTimeout(() => {
+      mainContent.style.opacity = "1";
+      popupContents.forEach(div => div.style.display = "none");
+    }, 300);
+    }
+  });
 
 });
