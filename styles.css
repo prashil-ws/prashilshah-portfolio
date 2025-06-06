@@ -89,7 +89,7 @@ a {
   background-color: #fff8dc;
   border: 6px solid #2d2d2d;
   box-shadow: 8px 8px #000;
-  padding: 8rem 7rem;
+  padding: 7rem 4rem;
   text-align: center;
   max-width: 90vw;
   position: relative;
@@ -411,22 +411,6 @@ pointer-events: auto;
 transition: opacity 0.3s ease;
 }
 
-/* .popup-content h2{
-  font-family: 'Press Start 2P', cursive;
-  font-weight: 400;
-  font-size: 2rem;
-  font-style: normal;
-
-} */
-
-/* .popup-content {
-  font-family: 'Rajdhani', sans-serif;
-  font-optical-sizing: auto;
-  font-size: 1.2rem;
-  font-weight: 600;
-  font-style: normal;
-} */
-
 .popup-content .popup-inner {
   display: flex;
   flex-direction: row;
@@ -439,19 +423,21 @@ transition: opacity 0.3s ease;
   position: sticky;
   top: 1rem;
   flex-shrink: 0;
+  text-align: center;
 }
 
 .popup-image img {
-  /* max-width: 200px; */
   width: 23vw;
   height: 28vw;
-  padding: 10px 0;    
+  padding: 10px 0;
+  margin: 0 auto;      
+  display: block;     
 }
 
 .popup-text h2{
   font-family: 'Press Start 2P', cursive;
   font-weight: 400;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   font-style: normal;
 }
 
@@ -469,13 +455,17 @@ transition: opacity 0.3s ease;
   font-size: 1.2rem;
   font-weight: 600;
   font-style: normal;
-  line-height: 1.4;
+  line-height: 1.6;
   text-align: justify;
 }
 
 .popup-text strong {  
   font-weight: 800;  
 }
+
+.popup-text ul{
+    padding-left: 25px;
+  }
 
 .popup-window::-webkit-scrollbar {
   width: 16px;
@@ -503,7 +493,43 @@ transition: opacity 0.3s ease;
   scrollbar-color: #000 #fff8dc;
 }
 
-/* Media Queries */
+.list-numbers{
+  list-style: auto;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.project-header h3 {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  font-style: normal;
+  margin: 0;
+}
+
+.tech-tag {
+  font-size: 0.8rem;
+  background-color: #f7ebbf;
+  border: 2px dashed #000;
+  padding: 0.04rem 0.5rem;
+  font-family: 'Courier New', monospace;
+  border-radius: 5px;
+  color: #000;
+  white-space: nowrap;
+}
+
+
+
+/*-----------------****************-----------------*/
+/*-------------------Media Queries------------------*/
+/*-----------------****************-----------------*/
+
 
 @media (max-width: 600px) {
   body {
@@ -653,6 +679,7 @@ transition: opacity 0.3s ease;
     font-size: 1rem;
     line-height: 1.6;
     text-align: justify;
+    max-width: 75vw;
   }
 
   .popup-text h2 {
@@ -661,8 +688,22 @@ transition: opacity 0.3s ease;
   }
 
   .popup-text h3 {
-    font-size: 1.2rem;
-    text-align: center;
+    font-size: 1.2rem;    
   }
+
+  .popup-text ul{
+    padding-left: 20px;
+  }
+
+  .project-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .tech-tag {    
+    justify-self: end;
+    margin-bottom: 0.5rem;
+  }  
   
 }
