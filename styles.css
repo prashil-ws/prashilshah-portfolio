@@ -680,6 +680,7 @@ transition: opacity 0.3s ease;
 
 @media (max-width: 600px) {
   body {
+    height: 100dvh;
     overflow-y: auto; /* allow scrolling on mobile */
   }
 
@@ -858,10 +859,11 @@ transition: opacity 0.3s ease;
   }
 
   #diceButton {
-    width: 9.7vw;
+    width: 9.8vw;
     height: 5vh;
     padding: 3px;
     overflow: hidden;
+    align-items: center;
   }
 
   #diceButton:hover, #diceButton:active{
