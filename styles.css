@@ -61,7 +61,7 @@ to {
 
 body {
   margin: 0;
-  height: 100vh;
+  height: 100dvh;
   background-color: #000; /* Black for loading screen */
   overflow: hidden;
   cursor: url('Images/mouse-pointer.cur'), auto;
@@ -376,15 +376,19 @@ color: #2d2d2d;
 border: 2px solid #2d2d2d;
     border-radius: 3px;
     box-shadow: 2px 2px #000;
+    transition: transform 0.2s, background-color 0.3s;
 }
 
 .close-btn:hover {
-transform: translateY(-2px);
+background-color: #fdf3cc;
+  transform: translateY(-2px);
 }
 
 .close-btn:active{
-  transform: translateY(1px);
   box-shadow: 1px 1px 0 #000;
+  transform: translateY(1px);
+  background-color: #fcefc0;
+  transition: none;
 }
 
 
@@ -672,15 +676,130 @@ transition: opacity 0.3s ease;
         }
 
 
+.contact-form {
+      margin-top: 20px;
+      max-width: 600px;
+    }
+
+    .contact-details h3{
+      margin: 0;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contact-form-group {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .contact-inputs {
+      width: 100%;
+      background: transparent;
+      color: #2d2d2d;
+      border: 2px solid black;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 4px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    .contact-inputs:hover, 
+    .contact-inputs:focus{
+      background: #f7ebbf;
+    }
+
+    textarea.contact-inputs {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .contact-form-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      display: flex;
+      width: 100%;
+    }
+
+    #submit-btn {
+      flex: 1;
+      background-color: #2d2d2d;
+  color: #fff;
+      text-decoration: none;
+  padding: 0.6rem 0.6rem;
+  border-radius: 6px;
+  box-shadow: 3px 3px 0 #000;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.85rem;
+      cursor: url('Images/click-pointer.cur'), pointer;
+      text-align: center;
+      transition: transform 0.2s, background-color 0.3s;
+    }
+
+
+#submit-btn:active {
+  transform: translateY(-1px);
+  background-color: #5a5a5a;
+  color: #f0f0f0;
+  box-shadow: 1px 1px 0 #000;
+  transition: none;
+}
+
+#reset-btn {
+      flex: 1;
+      background-color: transparent;
+      text-decoration: none;
+  padding: 0.6rem 0.6rem;
+  border-radius: 6px;
+  box-shadow: 3px 3px 0 #000;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.85rem;
+      cursor: url('Images/click-pointer.cur'), pointer;
+color: #2d2d2d;
+      text-align: center;
+      transition: transform 0.2s, background-color 0.3s;
+    }
+
+
+#reset-btn:active {
+  transform: translateY(-1px);
+  background-color: #fcefc0;
+  color: #2d2d2d;
+  box-shadow: 1px 1px 0 #000;
+  transition: none;
+}
+
+
+
 
 /*-----------------****************-----------------*/
 /*-------------------Media Queries------------------*/
 /*-----------------****************-----------------*/
 
 
+@media (hover: hover) and (pointer: fine) {
+
+  #submit-btn:hover {
+  background-color: #4b4b4b;
+  transform: translateY(-3px);
+}
+
+  #reset-btn:hover {
+  background-color: #fdf3cc;
+  transform: translateY(-3px);
+}
+}
+
+
 @media (max-width: 600px) {
   body {
-    height: 100dvh;
+    height: 100%;
     overflow-y: auto; /* allow scrolling on mobile */
   }
 
@@ -876,6 +995,7 @@ transition: opacity 0.3s ease;
   .dice-container {
     width: 18px;
     height: 18px;
+    right: 2px;
   }
 
   .front  { transform: rotateY(0deg) translateZ(10px); }
@@ -889,5 +1009,19 @@ transition: opacity 0.3s ease;
     width: 2px;
     height: 2px;
   }
+
+   .contact-row {
+        flex-direction: column;
+        gap: 0;
+      }
+
+    .contact-inputs{
+      margin-bottom: 5px;
+    }
+
+      .contact-form-buttons {
+        flex-direction: column;
+      }
+      
   
 }
