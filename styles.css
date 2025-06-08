@@ -56,6 +56,20 @@ to {
 }
 }
 
+ @keyframes liftAndVibrate {
+      0%   { transform: translate(0, -5px); }
+      20%  { transform: translate(-1px, -7px); }
+      40%  { transform: translate(2px, -4px); }
+      60%  { transform: translate(-2px, -4px); }
+      80%  { transform: translate(1px, -6px); }
+      100% { transform: translate(0, -5px); }
+    }
+
+    @keyframes shadowPulse {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.2); }
+    }
+
 
 /*Styles Section*/
 
@@ -539,7 +553,7 @@ transition: opacity 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: flex-start; /* align dice left always */
-  cursor: pointer;
+  cursor: url('Images/click-pointer.cur'), pointer;
   box-shadow: 3px 3px #000;
   border: 2px solid #2d2d2d;
   border-radius: 5px;
@@ -550,7 +564,7 @@ transition: opacity 0.3s ease;
 }
 
 #diceButton:hover {
-  width: 140px;  /* expand width */
+  width: 160px;  /* expand width */
   background-color: #fff8dc; /* light cream */
   transform: translateY(-2px);
 }
@@ -568,6 +582,7 @@ transition: opacity 0.3s ease;
             font-weight: 600;
             font-size: 1rem;
             margin-left: 12px;
+            margin-top: 7px;
             opacity: 0;
             transition: opacity 0.3s ease;
             pointer-events: none;
@@ -576,105 +591,16 @@ transition: opacity 0.3s ease;
         }
 
         .button-text .icon {
-  margin-left: 4px;
-  font-size: 12px;
+  margin-left: -10px;
+  font-size: 18px;
   vertical-align: middle;
-  opacity: 0.85;
+  margin-bottom: 6px;
 }
 
         #diceButton:hover .button-text {
             opacity: 1;
             pointer-events: auto;
         }
-
-
-
-       
-
-        .dice {
-            width: 100%;
-            height: 100%;
-            margin-left: 10px;
-            transform-style: preserve-3d;
-            transition: transform 0.3s ease-in-out;
-            transform: rotateX(25deg) rotateY(25deg);
-            position: relative;
-            z-index: 2;
-        }
-
-        .dice-container {
-  flex-shrink: 0;            /* prevent shrinking */
-  width: 20px;
-  height: 20px;
-  perspective: 600px;
-  position: relative;
-  margin-right: 10px;        /* space between dice and text */
-}
-
-        .dice-container::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 6px;
-            background: rgba(0, 0, 0, 0.15);
-            border-radius: 50%;
-            filter: blur(1px);
-            z-index: 1;
-        }
-
-        .face {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: #34424d;
-            /* dice face color */
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(3, 1fr);
-            align-items: center;
-            justify-items: center;
-            border: 1px solid #1d1d1d;
-            border-radius: 3px;
-            box-shadow:
-                0 0 0 1px #2a363f,
-                inset 0 0 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .pip {
-            width: 2.5px;
-            height: 2.5px;
-            background: #fff8dc;
-            /* pip color */
-            border-radius: 50%;
-        }
-
-        .front {
-            transform: rotateY(0deg) translateZ(10px);
-        }
-
-        .back {
-            transform: rotateY(180deg) translateZ(10px);
-        }
-
-        .right {
-            transform: rotateY(90deg) translateZ(10px);
-        }
-
-        .left {
-            transform: rotateY(-90deg) translateZ(10px);
-        }
-
-        .top {
-            transform: rotateX(90deg) translateZ(10px);
-        }
-
-        .bottom {
-            transform: rotateX(-90deg) translateZ(10px);
-        }
-
 
 .contact-form {
       margin-top: 20px;
@@ -774,6 +700,38 @@ color: #2d2d2d;
   box-shadow: 1px 1px 0 #000;
   transition: none;
 }
+
+
+.controller {
+      width: 25px;
+      transition: transform 0.3s;
+      z-index: 2;
+      margin-left: 8px;
+    }
+
+    .controller-button:hover .controller {
+      margin-top: 5px;
+      animation: liftAndVibrate 0.4s infinite;
+    }
+
+    .shadow {
+      width: 20px;
+      height: 10px;
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 50%;
+      position: absolute;
+      bottom: 3px;
+      left: 23px;
+      transform: translateX(-50%) scale(0);
+      transition: transform 0.3s;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .controller-button:hover .shadow {
+      transform: translateX(-50%) scale(1);
+      animation: shadowPulse 0.8s ease-in-out infinite;
+    }
 
 
 
@@ -990,25 +948,7 @@ color: #2d2d2d;
     height: 5vh;
     padding: 3px;
     overflow: hidden;
-  }
-
-  .dice-container {
-    width: 18px;
-    height: 18px;
-    right: 2px;
-  }
-
-  .front  { transform: rotateY(0deg) translateZ(10px); }
-.back   { transform: rotateY(180deg) translateZ(10px); }
-.right  { transform: rotateY(90deg) translateZ(10px); }
-.left   { transform: rotateY(-90deg) translateZ(10px); }
-.top    { transform: rotateX(90deg) translateZ(10px); }
-.bottom { transform: rotateX(-90deg) translateZ(10px); }
-
-  .pip {
-    width: 2px;
-    height: 2px;
-  }
+  }  
 
   .contact-details{
     width: 70vw;
@@ -1026,6 +966,12 @@ color: #2d2d2d;
       .contact-form-buttons {
         flex-direction: column;
       }
+
+      .controller {
+      width: 30px;            
+      padding: 3px;
+      margin: 0;
+    }
       
   
 }
