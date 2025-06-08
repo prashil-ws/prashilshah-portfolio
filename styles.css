@@ -1010,6 +1010,10 @@ color: #2d2d2d;
     height: 2px;
   }
 
+  .contact-details{
+    width: 70vw;
+  }
+
    .contact-row {
         flex-direction: column;
         gap: 0;
