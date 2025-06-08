@@ -7,6 +7,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const mainContent = document.getElementById("maincontent");
   const popupContents = document.querySelectorAll(".popup-content");
   const boosted = document.querySelector('.scanlines-boost');
+  const form = document.getElementById('contactForm');
 
   const facePips = {
             1: [4],
@@ -42,15 +43,18 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  closeBtn.addEventListener("click", () => {
-    // Hide overlay
+  function closePopup() {
     overlay.classList.remove("visible");
 
-    // Restore main content after delay (to match overlay fade-out)
     setTimeout(() => {
       mainContent.style.opacity = "1";
       popupContents.forEach(div => div.style.display = "none");
+      if (form) form.reset();
     }, 300);
+}
+
+  closeBtn.addEventListener("click", () => {
+    closePopup();
   });
 
   document.querySelectorAll('#title span').forEach(span => {
@@ -82,11 +86,7 @@ window.addEventListener('DOMContentLoaded', () => {
   overlay.addEventListener('click', function (e) {
     const popup = overlay.querySelector('.popup-window');
     if (!popup.contains(e.target)) {
-      overlay.classList.remove("visible");
-      setTimeout(() => {
-      mainContent.style.opacity = "1";
-      popupContents.forEach(div => div.style.display = "none");
-    }, 300);
+      closePopup();
     }
   });
 
@@ -188,6 +188,8 @@ window.addEventListener('DOMContentLoaded', () => {
         //     dialog.style.display = dialog.style.display === "none" ? "block" : "none";
         // });
 
-
+  form.addEventListener('submit', () => {    
+    closePopup();    
+  });
 
 });
