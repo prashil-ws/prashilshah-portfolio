@@ -458,6 +458,7 @@ transition: opacity 0.3s ease;
   font-weight: 400;
   font-size: 1.6rem;
   font-style: normal;
+  margin-bottom: 5px;
 }
 
 .popup-text h3{
@@ -734,6 +735,12 @@ color: #2d2d2d;
     }
 
 
+    .dark-underline {
+  display: inline-block;
+  border-bottom: 4px solid #222; /* dark color */
+  padding-bottom: 2px;
+}
+
 
 
 /*-----------------****************-----------------*/
@@ -972,6 +979,11 @@ color: #2d2d2d;
       padding: 3px;
       margin: 0;
     }
+
+    .dark-underline {    
+    border-bottom: 2px solid #222; /* thinner line */
+    padding-bottom: 1px;
+  }
       
   
 }
