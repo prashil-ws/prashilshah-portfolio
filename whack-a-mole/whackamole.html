@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whack a mole</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mole.css">
+</head>
+<body>  
+  <dialog id="gameDialog">
+        <div id="gameUI">
+            <div id="highScoreBox">
+                <h2 id="high-score">High Score: 0</h2>            
+            </div>
+
+            <div id="scoreBox">
+                <h2 id="score">Score: 0</h2>
+                <div id="scoreGain" class="score-gain">+10</div>
+            </div>
+            <div id="board"></div>
+            <div id="overlay">
+                <h1 class="game-title">Whack A Mole</h1>
+                <div id="start-buttons">
+                    <button id="playBtn">Play</button>
+                </div>
+            </div>
+        </div>
+    </dialog>
+    <script src="mole.js"></script>
+</body>
+</html>

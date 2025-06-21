@@ -743,6 +743,81 @@ color: #2d2d2d;
 
 
 
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.game-button {
+    background: #daffe0;
+    color: #000;
+    border: 3px solid #000;
+    border-radius: 5px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 3px 3px 0 #000;
+    cursor: url('Images/click-pointer.cur'), pointer;
+}
+
+.game-button img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 8px;
+}
+
+.game-button:hover {
+    background-color: #c8eace;
+    color: #111;
+    transform: translateY(-3px);
+}
+
+.game-button:active{
+  transform: translateY(-1px);
+  background-color: #bcfbc7;
+  color: #000;
+  box-shadow: 1px 1px 0 #000;
+  transition: none;
+}
+
+.game-button.empty {
+    background: transparent;
+    border: none;
+    pointer-events: none;
+    box-shadow: 0 0;
+}
+
+#gameDialog{
+  padding: 0;
+}
+
+#gameDialog .close-btn{
+  top: 0.5rem;
+  right: 0.6rem;
+  background-color: #fff8dc;
+  font-size: 1.1rem;
+}
+
+#gameFrame{
+  height: 500px;
+  width: 500px;
+  border: 4px solid #2d2d2d;
+  box-shadow: 6px 6px 0 #000;
+}
+
+
+
+
 /*-----------------****************-----------------*/
 /*-------------------Media Queries------------------*/
 /*-----------------****************-----------------*/
@@ -855,7 +930,7 @@ color: #2d2d2d;
   }
 
   #title span {
-    font-size: 2.2rem;
+    font-size: 2.15rem;
   }
 
   .popup-window {
@@ -985,5 +1060,11 @@ color: #2d2d2d;
     padding-bottom: 1px;
   }
       
+    #gameFrame {
+      height: 80vh;
+      width: 85vw;
+      border: 2px solid #2d2d2d;
+      box-shadow: 3px 3px 0 #000;
+    }
   
 }
