@@ -1,0 +1,218 @@
+body{
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    background-color: #fcd34d;
+    background-size: cover;
+    cursor: url('../Images/mouse-pointer.cur'), auto;
+}
+
+#board{
+    width: 390px;
+    height: 390px;
+    padding: 40px 0 10px 0;
+    background: url(./soil.png);
+    background-size: cover;
+    border: 3px solid white;
+    border-radius: 20px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#board div {
+    width: 130px;
+    height: 130px;
+    background: url('./pipe.png');
+    background-size: cover;
+}
+
+#board div img {
+    width: 60px;
+    height: 70px;
+
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Retro brown button */
+#startBtn {
+    font-size: 2.5rem;
+    padding: 1rem 2rem;
+    background-color: #8B4513; /* SaddleBrown */
+    color: #fff8dc; /* Cornsilk */
+    border: 4px solid #654321; /* Darker brown */
+    border-radius: 12px;
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 1px 1px #000;
+    box-shadow: 4px 4px #000;
+    cursor: pointer;
+    transition: transform 0.1s ease;        
+}
+
+#startBtn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px #000;
+}
+
+/* Dialog background */
+dialog {
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(to bottom, #fff8dc, #deb887); /* Cornsilk to BurlyWood */
+    padding: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    font-family: 'Press Start 2P', cursive;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+#scoreBox {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: #fff8dc;
+    border: 3px solid #654321;
+    border-radius: 20px;
+    padding: 2px 5px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+#score {
+    position: static;
+    font-size: 0.6rem;
+    color: #000;
+    margin: 0;
+}
+
+#highScoreBox {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: #fff8dc;
+    border: 3px solid #654321;
+    border-radius: 20px;
+    padding: 2px 5px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+#high-score {
+    position: static;
+    font-size: 0.6rem;
+    color: #000;
+    margin: 0;
+}
+
+/* Game UI container */
+#gameUI {
+    position: relative;
+    width: fit-content;
+    margin: auto;
+}
+
+/* Overlay */
+#overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.game-title {
+    font-size: 2.3rem;
+    margin-bottom: 2rem;
+    font-family: 'Press Start 2P', cursive;
+}
+
+#start-buttons button {
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #8B4513;
+    color: white;
+    cursor: pointer;
+    box-shadow: 3px 3px #000;
+    font-family: 'Press Start 2P', cursive;
+    cursor: url('../Images/click-pointer.cur'), pointer;
+}
+
+#start-buttons button:hover {
+    background-color: #A0522D;
+}
+
+.final-score {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #fcd34d;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.score-gain {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    font-size: 0.5rem;
+    color: #00ff00;
+    font-weight: bold;
+    opacity: 0;
+    pointer-events: none;
+    animation: none;
+}
+
+@keyframes gainFade {
+    0% {
+        opacity: 1;
+        transform: translate(50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(50%, -120%) scale(1.5);
+    }
+}
+
+@media (max-width: 400px) {
+
+    #gameUI{
+        width: 90vw;
+        height: 79vh;
+    }
+
+    #board{
+        width: 85vw;
+        height: 70vh;
+        margin: 5px;
+    }
+
+    #highScoreBox{
+        left: 14px;
+    }
+
+    #scoreBox{
+        right: 16px;
+    }
+
+    #board div{
+        width: 26vw;
+        height: 15vh;
+    }
+
+    #board div img {
+        margin-left: 15px;
+        width: 18vw;
+        height: 8vh;
+    }
+    
+}

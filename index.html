@@ -28,13 +28,13 @@
                     <span class="tooltip">Designed by Prashil Shah</span>
                 </div>
 
-                <!-- <div id="diceButton" class="controller-button">
+                <div id="diceButton" class="controller-button">
                      <img src="Images/controller-logo.png" alt="Controller" class="controller">
       <div class="shadow"></div>
                     <span class="button-text">Games                        
                         <i class="fas fa-arrow-up-right-from-square icon"></i>
                     </span>
-                </div> -->
+                </div>
 
                 <div class="social-bar">
                     <a href="https://github.com/prashilshah98/" target="_blank" class="social-link">
@@ -349,10 +349,37 @@
                             </div>
                             
                             </div>
-                    </div>                    
+                    </div>
+
+                    <div class="popup-content" id="popupGames" style="display: none;">
+                        <div class="popup-inner">                            
+                            <div class="popup-text">
+                                <h2 class="dark-underline">GAMES</h2>
+                                <div class="games-grid">                                    
+                                    <button onclick="openGame('Whack-a-Mole/whackamole.html')" class="game-button">
+                                        <img src="Images/mole-logo.png" alt="Mole Game" />
+                                        <span>Whack-a-Mole</span>
+                                    </button>
+                                    
+                                    <button class="game-button empty"></button>
+                                    <button class="game-button empty"></button>
+                                    <button class="game-button empty"></button>
+                                    <button class="game-button empty"></button>
+                                    <button class="game-button empty"></button>
+                                    <button class="game-button empty"></button>
+                                    <button class="game-button empty"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    
                 </div>
+                <dialog id="gameDialog">
+                    <button class="close-btn" onclick="closeGame()">&times;</button>
+                    <iframe id="gameFrame" width="500" height="500" frameBorder="0"></iframe>
+                </dialog>
             </div>
-        </div>
+        </div>        
 
         <script src="script.js"></script>
         
