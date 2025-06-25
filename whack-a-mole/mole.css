@@ -185,6 +185,10 @@ dialog::backdrop {
 
 @media (max-width: 400px) {
 
+    #gameDialog{
+        padding: 10px 12px 10px 8px;
+    }
+
     #gameUI{
         width: 90vw;
         height: 79vh;
