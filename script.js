@@ -102,7 +102,7 @@ window.addEventListener('DOMContentLoaded', () => {
 function openGame(url) {
   const dialog = document.getElementById("gameDialog");
   const frame = document.getElementById("gameFrame");
-  const popupWindow = document.querySelectorAll(".popup-window");
+  //const popupWindow = document.querySelectorAll(".popup-window");
   frame.src = url;  
   document.querySelector('.popup-window').style.display = 'none';
   //popupWindow.forEach(div => div.style.display = "none");
@@ -122,6 +122,7 @@ function closeGame() {
 
     setTimeout(() => {
       mainContent.style.opacity = "1";
+      document.querySelector('.popup-window').style.display = 'block';
       popupContents.forEach(div => div.style.display = "none");
       if (form) form.reset();
     }, 300);
