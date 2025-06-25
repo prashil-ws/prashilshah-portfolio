@@ -740,7 +740,7 @@ textarea.contact-inputs {
   width: 25px;
   transition: transform 0.3s;
   z-index: 2;
-  margin-left: 8px;
+  margin-left: 10px;
 }
 
 .controller-button:hover .controller {
@@ -1112,7 +1112,7 @@ textarea.contact-inputs {
   .controller {
     width: 30px;
     padding: 3px;
-    margin: 0;
+    margin: 3px;
   }
 
   .dark-underline {
