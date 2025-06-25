@@ -735,12 +735,15 @@ textarea.contact-inputs {
   transition: none;
 }
 
+#controllerLogo{
+  align-items: center;
+}
 
 .controller {
   width: 25px;
   transition: transform 0.3s;
   z-index: 2;
-  margin-left: 0.5em;
+  margin-left: 0.6em;
 }
 
 .controller-button:hover .controller {
@@ -1082,6 +1085,7 @@ textarea.contact-inputs {
     padding: 3px;
     overflow: hidden;
     align-items: center;
+    text-align: center;
   }
 
   #diceButton:hover,
@@ -1109,10 +1113,15 @@ textarea.contact-inputs {
     flex-direction: column;
   }
 
+  #controllerLogo{
+    text-align: center;
+    margin: auto;
+  }
+
   .controller {
     width: 30px;
     padding: 3px;
-    margin: 0.15em;
+    margin: auto;
   }
 
   .dark-underline {
