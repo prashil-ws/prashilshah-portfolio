@@ -1,0 +1,90 @@
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;      /* prevents scrollbars */
+    display: flex;
+    justify-content: center;
+    align-items: center;   /* centers the canvas */
+    text-align: center;
+
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+#gameContainer {
+    position: relative;
+}
+
+#board {
+    display: block;
+}
+
+#resetBtn {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    padding: 0;
+    background: linear-gradient(to bottom, #ffd700, #e6ac00);
+    border: 4px solid black;
+    border-radius: 12px;
+    box-shadow: 0 6px #000000;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#resetBtn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+#resetBtn:active {
+    box-shadow: 0 2px #b8860b;
+    transform: translateX(-50%) translateY(4px);
+}
+
+#gameOverBox,
+#scoreTextBox {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(to top, #ffa380, #ffdc00);
+    border: 4px solid black;
+    padding: 10px 20px;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 18px;
+    color: black;    
+    z-index: 20;
+    border-radius: 12px;
+}
+
+#gameOverBox {
+    top: 30%;
+}
+
+#gameOverBox p{
+    margin: 0;
+}
+
+#scoreTextBox {
+    top: 45%;
+}
+
+#yourScoreText,
+#highScoreText {
+    white-space: nowrap;
+    font-size: 16px;
+    margin: 8px 0;
+}
+

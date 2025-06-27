@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Flappy Bird</title>
+    <link rel="stylesheet" href="flappy.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="flappy.js"></script>
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="board"></canvas>
+        <!-- <button id="resetBtn" style="display: none;">Restart</button> -->
+        <button id="resetBtn" style="display: none;">
+            <!-- <i class="fas fa-rotate-right"></i> -->
+             <img src="restart.png" alt="Restart" />
+        </button>
+    </div>
+    <div id="gameOverBox" style="display: none;">
+        <p>GAME OVER</p>
+    </div>
+    
+    <div id="scoreTextBox" style="display: none;">
+        <p id="yourScoreText"></p>
+        <p id="highScoreText"></p>
+    </div>
+</body>
+</html>
