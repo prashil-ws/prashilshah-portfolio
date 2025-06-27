@@ -115,6 +115,7 @@ function closeGame() {
   const overlay = document.getElementById("popupOverlay");
   const mainContent = document.getElementById("maincontent");
   const popupContents = document.querySelectorAll(".popup-content");
+  const form = document.getElementById('contactForm');
 
   frame.src = "";
   dialog.close();

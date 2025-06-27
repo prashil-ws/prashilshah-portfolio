@@ -72,14 +72,9 @@ window.onload = window.onresize = function() {
     background.onload = () => draw();
     if (background.complete) draw();        
 
-    requestAnimationFrame(update);
-    
-    placePipes(); // Place first pipe immediately
-    setInterval(placePipes, 1500); // Then repeat every 1500ms
-    
-    document.addEventListener("keydown", moveBird);
-    document.addEventListener("touchstart", function(e) {
-        velocityY = -6;
+    document.getElementById("playButton").addEventListener("click", function () {
+        document.getElementById("startScreen").style.display = "none";
+        startGame();
     });
 
     document.getElementById("resetBtn").addEventListener("click", function () {
@@ -97,6 +92,16 @@ window.onload = window.onresize = function() {
 
     });
 
+}
+
+function startGame() {
+    placePipes();
+    setInterval(placePipes, 1500);
+    requestAnimationFrame(update);
+    document.addEventListener("keydown", moveBird);
+    document.addEventListener("touchstart", function () {
+        velocityY = -6;
+    });
 }
 
 function draw() {
