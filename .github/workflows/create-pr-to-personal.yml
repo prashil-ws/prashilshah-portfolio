@@ -1,0 +1,39 @@
+name: Create PR to Personal Repo (excluding workflows via temp branch)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create-clean-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Create temporary clean branch
+        run: |
+          git checkout -b temp-pr
+          git rm -r --cached .github/workflows
+          git commit -m "Temp branch without workflows" || echo "No changes"
+          git push origin temp-pr --force
+
+      - name: Create PR to personal repo
+        run: |
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.PERSONAL_REPO_PAT }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/prashilshah98/prashilshah98.github.io/pulls \
+            -d '{
+              "title": "Auto PR from workspace repo",
+              "head": "prashil-ws:temp-pr",
+              "base": "main"
+            }'
