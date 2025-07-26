@@ -7,13 +7,23 @@
     <link rel="stylesheet" href="wordle.css">
 </head>
 <body>
-    <h1>Wordle</h1>
+    <h1>Wordle Game</h1>
     <ul id="word-list"></ul>
     
     <div id="board"></div>
-    <!-- <input id="guess-input" maxlength="5" type="text" placeholder="Enter guess" style="display: none;"/> -->
-    <button id="submitButton" onclick="SubmitGuess()" disabled>Submit</button>
-    
+    <div id="keyboard" class="keyboard-container"></div>
+    <button id="submitButton" style="display: none;">Submit</button>
+    <div id="notification" class="notification"></div>
+
+    <div id="resultDialog" class="dialog hidden">
+        <div class="dialog-content">
+            <span class="close-button" onclick="closeDialog()">&times;</span>
+            <h2 id="dialog-title"></h2>
+            <p><strong>Correct Word:</strong> <span id="correctWord"></span></p>
+            <p><strong>Meaning:</strong> <span id="wordMeaning"></span></p>
+            <button id="new-word-btn"><i class="fa fa-refresh" aria-hidden="true"></i>  Generate New Word</button>
+        </div>
+    </div>
     <script src="wordle.js"></script>
 </body>
 </html>
