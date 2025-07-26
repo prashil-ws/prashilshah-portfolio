@@ -2,14 +2,22 @@ const listContainer = document.getElementById('word-list');
 const board = document.getElementById('board');
 const submitButton = document.getElementById("submitButton");
 
+const keyLayout = [
+  [...'QWERTYUIOP'],
+  [...'ASDFGHJKL'],
+  ['ENTER', ...'ZXCVBNM', '←']
+];
 // const input = document.getElementById('guess-input');
 
 let wordList = [];
 let currentGuess = '';
 let currentRow = 0;
 let targetWord = '';
+let enterButton;
+let wordMeaning = '';
+let tempWordMeaning = '';
 
-
+document.getElementById("submitButton").addEventListener("click", SubmitGuess);
 
 async function loadWords() {
     const cached = localStorage.getItem('WordsList');
@@ -46,12 +54,17 @@ async function getRandomWord(){
         isWord = await checkIsWord(wordList[randomIndex]);
     }
     
+    wordMeaning = tempWordMeaning;
     return wordList[randomIndex];
 }
 
 async function checkIsWord(randomWord){
     try {
         const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${randomWord}`);
+        if(!wordMeaning){
+            const data = await res.json();
+            tempWordMeaning = data[0]?.meanings[0]?.definitions[0]?.definition;
+        }        
         return res.ok;
     }   
     catch(error) {
@@ -64,6 +77,9 @@ async function checkIsWord(randomWord){
 loadWords().then(async () => {
     targetWord = (await getRandomWord()).toUpperCase();
     createBoard();
+    createKeyboard();
+    focusFirstBox(currentRow);
+
     // submitButton.disabled = false;
 });
 
@@ -121,6 +137,9 @@ function checkRowCompletion() {
     const rowInputs = [...board.children[currentRow].children];
     const isComplete = rowInputs.every(input => input.value.trim() !== "");
     submitButton.disabled = !isComplete;
+    if (enterButton) {
+        enterButton.disabled = !isComplete;
+    }
 }
 
 async function SubmitGuess() {
@@ -129,9 +148,10 @@ async function SubmitGuess() {
     const guess = rowInputs.map(input => input.value.toUpperCase()).join("");
 
     if(!(await checkIsWord(guess))){
-        alert('Not a valid word');
-        rowInputs.forEach(input => input.value = '')
-        rowInputs[0].focus();
+        // alert('Not a valid word');
+        showNotification('Not a valid word');
+        // rowInputs.forEach(input => input.value = '')
+        rowInputs[guess.length-1].focus();
         return;
     }
 
@@ -139,18 +159,32 @@ async function SubmitGuess() {
     for(i = 0; i < 5; i++){
         /** @type {HTMLElement} */
         const input = rowInputs[i];
+        const letter = input.value;
 
-        if(guess[i] === targetWord[i]){
+        const keyBtn = document.querySelector(`.key[data-key="${letter.toUpperCase()}"]`);
+
+        if (letter === targetWord[i]) {
             input.style.backgroundColor = "#538d4e";
-        } else if(targetWord.includes(guess[i])){
+            if (keyBtn) keyBtn.style.backgroundColor = "#538d4e";
+        } else if (targetWord.includes(letter)) {
             input.style.backgroundColor = "#b59f3b";
+            if (keyBtn && keyBtn.style.backgroundColor !== "rgb(83, 141, 78)") {
+                keyBtn.style.backgroundColor = "#b59f3b";
+            }
         } else {
-            input.style.backgroundColor = "#68686cff";
+            input.style.backgroundColor = "#68686c";
+            if (
+                keyBtn &&
+                keyBtn.style.backgroundColor !== "rgb(83, 141, 78)" &&
+                keyBtn.style.backgroundColor !== "rgb(181, 159, 59)"
+            ) {
+                keyBtn.style.backgroundColor = "#68686c";
+            }
         }
         input.disabled = true;
     }
-
     currentRow++;
+    focusFirstBox(currentRow);
 
     if(currentRow < 6){
         const nextRowInputs = board.children[currentRow].children;
@@ -161,11 +195,104 @@ async function SubmitGuess() {
     }
 
     if(guess === targetWord){
-        alert("Correct word!!!");
+        // alert("Correct word!!!");
+        showResultDialog("Correct word!!", targetWord, wordMeaning);
     }
     else if(currentRow === 6) {
-        alert("Out of guesses. Word was: "+ targetWord);
+        // alert("Out of guesses. Word was: "+ targetWord);
+        showResultDialog("Oops! You lost", targetWord, wordMeaning);
     }
-
+    checkRowCompletion();
 
 }
+
+function createKeyboard() {
+  const keyboardDiv = document.getElementById("keyboard");
+
+  keyLayout.forEach(row => {
+    const rowDiv = document.createElement("div");
+    rowDiv.classList.add("keyboard-row");
+
+    row.forEach(key => {
+        const button = document.createElement("button");
+        button.textContent = key;
+        if(key === "ENTER"){
+            enterButton = button;
+            enterButton.disabled = true;
+        }
+        button.classList.add("key");    
+        button.setAttribute("data-key", key);    
+        button.addEventListener("click", () => handleKeyPress(key));
+        rowDiv.appendChild(button);
+    });
+
+    keyboardDiv.appendChild(rowDiv);
+  });
+}
+
+function handleKeyPress(key){
+    const row = board.children[currentRow];
+    const inputs = [...row.querySelectorAll("input")];
+    const currentInput = inputs.find(i => !i.value);
+
+    if(key === "ENTER"){
+        submitButton.click();
+    }    
+    else if(key === "←"){
+        const filledInputs = inputs.filter(i => i.value);
+        const lastFilled = filledInputs[filledInputs.length - 1];
+        if(lastFilled){
+            lastFilled.value = "";
+            lastFilled.focus();
+            
+        }        
+    }
+    else if(/^[A-Z]$/.test(key)){
+        if(currentInput){
+            currentInput.value = key;
+            currentInput.focus();
+            const next  = currentInput.nextElementSibling;
+            if(next && next.tagName === "INPUT"){
+                next.focus();
+            }
+        }
+    }
+    checkRowCompletion();
+}
+
+function showNotification(message){
+    const notification = document.getElementById("notification");
+    notification.textContent = message;
+    notification.classList.add("show");
+
+    setTimeout(() => {
+        notification.classList.remove("show");
+    }, 2500);
+}
+
+function focusFirstBox(rowIndex) {
+    const inputs = document.querySelectorAll(".box");
+
+    inputs.forEach((input, index) => {
+        const row = Math.floor(index / 5); // Assuming 5 letters per row
+        input.disabled = row !== rowIndex;
+    });
+
+    const firstBox = inputs[rowIndex * 5];
+    if (firstBox) firstBox.focus();
+}
+
+function showResultDialog(title, word, meaning) {
+    document.getElementById("dialog-title").textContent = title;
+    document.getElementById("correctWord").textContent = word.toUpperCase();
+    document.getElementById("wordMeaning").textContent = meaning;
+    document.getElementById("resultDialog").classList.remove("hidden");
+}
+
+function closeDialog() {
+    document.getElementById("resultDialog").classList.add("hidden");
+}
+
+document.getElementById("new-word-btn").addEventListener("click", () => {
+  location.reload(); 
+});
