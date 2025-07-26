@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f3f3f3;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#board {
+    display: grid;
+    grid-template-rows: repeat(6, auto);
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.box {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 2px solid #999;
+    background-color: white;
+    color: black;
+}
+.box:focus {
+    outline: none;
+    border-color: #333;
+}
+
+
+input#guess-input {
+    padding: 10px;
+    font-size: 18px;
+    width: 200px;
+}
+
+button {
+    margin-left: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ddd;
+}
