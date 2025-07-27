@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wordle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="wordle.css">
 </head>
 <body>
-    <h1>Wordle Game</h1>
-    <ul id="word-list"></ul>
-    
+    <button id="reset-btn" style="display: none;"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+    <h1>Wordle</h1>
+
     <div id="board"></div>
     <div id="keyboard" class="keyboard-container"></div>
     <button id="submitButton" style="display: none;">Submit</button>

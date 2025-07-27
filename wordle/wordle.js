@@ -197,7 +197,7 @@ async function SubmitGuess() {
 
     if(guess === targetWord){
         // alert("Correct word!!!");
-        showResultDialog("Correct word!!", targetWord, wordMeaning);
+        showResultDialog("Correct word!!", targetWord, wordMeaning);        
     }
     else if(currentRow === 6) {
         // alert("Out of guesses. Word was: "+ targetWord);
@@ -288,6 +288,7 @@ function showResultDialog(title, word, meaning) {
     document.getElementById("correctWord").textContent = word.toUpperCase();
     document.getElementById("wordMeaning").textContent = meaning;
     document.getElementById("resultDialog").classList.remove("hidden");
+    document.getElementById("reset-btn").style.display = "block";
 }
 
 function closeDialog() {
@@ -295,5 +296,9 @@ function closeDialog() {
 }
 
 document.getElementById("new-word-btn").addEventListener("click", () => {
+  location.reload(); 
+});
+
+document.getElementById("reset-btn").addEventListener("click", () => {
   location.reload(); 
 });
