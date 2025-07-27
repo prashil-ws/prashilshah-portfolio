@@ -93,7 +93,7 @@ function createBoard(rows = 6, cols = 5){
 
             const input = document.createElement("input");
             input.setAttribute("maxLength", 1);
-            input.setAttribute("type", "none");
+            input.setAttribute('readonly', 'readonly');
             input.classList.add("box");
             input.dataset.row = i;
             input.dataset.col = j;
