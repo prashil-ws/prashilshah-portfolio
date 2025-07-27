@@ -156,18 +156,42 @@ async function SubmitGuess() {
         return;
     }
 
-    const row = board.children[currentRow];
+    const targetArray = targetWord.split('');
+    const guessArray = guess.split('');
+    const letterStatus = Array(5).fill('');
+    const targetLetterUsed = Array(5).fill(false);
+
+    for (let i = 0; i < 5; i++){
+        if(guessArray[i] === targetArray[i]){
+            letterStatus[i] = 'green';
+            targetLetterUsed[i] = 'true';
+        }
+    }
+
+    for(let i = 0; i< 5; i++){
+        if(letterStatus[i] === ''){
+            for(let j = 0; j < 5; j++){
+                if(!targetLetterUsed[j] && guessArray[i] === targetArray[j]){
+                    letterStatus[i] = 'yellow';
+                    targetLetterUsed[j] = 'true';
+                    break;
+                }                
+            }
+            if(letterStatus[i] === '') letterStatus[i] = 'gray';
+        }
+    }
+
+    // const row = board.children[currentRow];
     for(i = 0; i < 5; i++){
         /** @type {HTMLElement} */
         const input = rowInputs[i];
-        const letter = input.value;
-
+        const letter = guessArray[i];
         const keyBtn = document.querySelector(`.key[data-key="${letter.toUpperCase()}"]`);
 
-        if (letter === targetWord[i]) {
+        if (letterStatus[i] === 'green') {
             input.style.backgroundColor = "#538d4e";
             if (keyBtn) keyBtn.style.backgroundColor = "#538d4e";
-        } else if (targetWord.includes(letter)) {
+        } else if (letterStatus[i] === 'yellow') {
             input.style.backgroundColor = "#b59f3b";
             if (keyBtn && keyBtn.style.backgroundColor !== "rgb(83, 141, 78)") {
                 keyBtn.style.backgroundColor = "#b59f3b";
