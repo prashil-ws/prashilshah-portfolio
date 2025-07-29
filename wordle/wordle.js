@@ -1,6 +1,7 @@
 const listContainer = document.getElementById('word-list');
 const board = document.getElementById('board');
 const submitButton = document.getElementById("submitButton");
+let gameOver = false;
 
 const keyLayout = [
   [...'QWERTYUIOP'],
@@ -208,17 +209,9 @@ async function SubmitGuess() {
         }
         input.disabled = true;
     }
+
     currentRow++;
-    focusFirstBox(currentRow);
-
-    if(currentRow < 6){
-        const nextRowInputs = board.children[currentRow].children;
-        nextRowInputs[0].focus();
-    }
-    else{
-        submitButton.disabled = true;
-    }
-
+    
     if(guess === targetWord){
         // alert("Correct word!!!");
         showResultDialog("Correct word!!", targetWord, wordMeaning);        
@@ -227,6 +220,17 @@ async function SubmitGuess() {
         // alert("Out of guesses. Word was: "+ targetWord);
         showResultDialog("Oops! You lost", targetWord, wordMeaning);
     }
+
+    if(currentRow < 6 && !gameOver){
+        const nextRowInputs = board.children[currentRow].children;
+        nextRowInputs[0].focus();
+    }
+    else{
+        submitButton.disabled = true;
+    }    
+
+    if(!gameOver) focusFirstBox(currentRow);
+    
     checkRowCompletion();
 
 }
@@ -259,30 +263,32 @@ function handleKeyPress(key){
     const row = board.children[currentRow];
     const inputs = [...row.querySelectorAll("input")];
     const currentInput = inputs.find(i => !i.value);
-
-    if(key === "ENTER"){
-        submitButton.click();
-    }    
-    else if(key === "←"){
-        const filledInputs = inputs.filter(i => i.value);
-        const lastFilled = filledInputs[filledInputs.length - 1];
-        if(lastFilled){
-            lastFilled.value = "";
-            lastFilled.focus();
-            
-        }        
-    }
-    else if(/^[A-Z]$/.test(key)){
-        if(currentInput){
-            currentInput.value = key;
-            currentInput.focus();
-            const next  = currentInput.nextElementSibling;
-            if(next && next.tagName === "INPUT"){
-                next.focus();
+    
+    if(!gameOver){
+        if(key === "ENTER"){
+            submitButton.click();
+        }    
+        else if(key === "←"){
+            const filledInputs = inputs.filter(i => i.value);
+            const lastFilled = filledInputs[filledInputs.length - 1];
+            if(lastFilled){
+                lastFilled.value = "";
+                lastFilled.focus();
+                
+            }        
+        }
+        else if(/^[A-Z]$/.test(key)){
+            if(currentInput){
+                currentInput.value = key;
+                currentInput.focus();
+                const next  = currentInput.nextElementSibling;
+                if(next && next.tagName === "INPUT"){
+                    next.focus();
+                }
             }
         }
-    }
-    checkRowCompletion();
+        checkRowCompletion();
+    }    
 }
 
 function showNotification(message){
@@ -308,6 +314,7 @@ function focusFirstBox(rowIndex) {
 }
 
 function showResultDialog(title, word, meaning) {
+    gameOver = true;
     document.getElementById("dialog-title").textContent = title;
     document.getElementById("correctWord").textContent = word.toUpperCase();
     document.getElementById("wordMeaning").textContent = meaning;
