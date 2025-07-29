@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    cursor: url('../Images/mouse-pointer.cur'), auto;
 }
 
 html, body {
@@ -89,7 +90,7 @@ h1 {
     font-size: 15px;
     min-width: 36px;
     text-transform: uppercase;
-    cursor: pointer;
+    cursor: url('../Images/click-pointer.cur'), pointer;
     color: #111;
     transition: background-color 0.2s ease;
     box-shadow: 1px 1px #000;
@@ -193,7 +194,7 @@ input.box:disabled {
     right: 10px;
     top: 5px;
     font-size: 20px;
-    cursor: pointer;
+    cursor: url('../Images/click-pointer.cur'), pointer;
     color: #555;
 }
 
@@ -210,7 +211,7 @@ input.box:disabled {
     background-color: #007bff;
     border: 1px solid #2d2d2d;
     border-radius: 4px;
-    cursor: pointer;
+    cursor: url('../Images/click-pointer.cur'), pointer;
     transition: background-color 0.2s ease;
     font-weight: 500;
     box-shadow: 1px 1px #000;
@@ -233,7 +234,7 @@ input.box:disabled {
     border: 1px solid #2d2d2d;
     box-shadow: 1px 1px #000;
     border-radius: 4px;
-    cursor: pointer;
+    cursor: url('../Images/click-pointer.cur'), pointer;
     transition: background-color 0.2s ease;
     font-weight: 500;
 }
@@ -247,6 +248,17 @@ input.box:disabled {
     background-color: #f0e8e0;
     color: #000;
     cursor: not-allowed;
+}
+
+#playSound{    
+    color: #3b5028;
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: url('../Images/click-pointer.cur'), pointer;
+    position: absolute;
+    top: 55px;
+    right: 30px;
 }
 
 @keyframes fadeIn {
