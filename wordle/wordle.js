@@ -17,6 +17,8 @@ let targetWord = '';
 let enterButton;
 let wordMeaning = '';
 let tempWordMeaning = '';
+let audioURL = '';
+let tempAudioURL = '';
 
 document.getElementById("submitButton").addEventListener("click", SubmitGuess);
 
@@ -56,6 +58,10 @@ async function getRandomWord(){
     }
     
     wordMeaning = tempWordMeaning;
+    if(tempAudioURL){
+        document.getElementById('playSound').style.display = "inline";
+        audioURL = tempAudioURL;
+    }
     return wordList[randomIndex];
 }
 
@@ -65,6 +71,7 @@ async function checkIsWord(randomWord){
         if(!wordMeaning){
             const data = await res.json();
             tempWordMeaning = data[0]?.meanings[0]?.definitions[0]?.definition;
+            tempAudioURL = data[0]?.phonetics[0]?.audio;
         }        
         return res.ok;
     }   
@@ -333,3 +340,8 @@ document.getElementById("new-word-btn").addEventListener("click", () => {
 document.getElementById("reset-btn").addEventListener("click", () => {
   location.reload(); 
 });
+
+function playSound(){
+    const audio = new Audio(audioURL);
+    audio.play();
+}

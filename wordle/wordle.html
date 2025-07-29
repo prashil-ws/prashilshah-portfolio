@@ -21,7 +21,9 @@
         <div class="dialog-content">
             <span class="close-button" onclick="closeDialog()">&times;</span>
             <h2 id="dialog-title"></h2>
-            <p><strong>Correct Word:</strong> <span id="correctWord"></span></p>
+            <p><strong>Correct Word:</strong> <span id="correctWord"></span>
+                <button id="playSound" style="display: none;" onclick="playSound()"><i class="fa fa-volume-up"></i></button>
+            </p>
             <p><strong>Meaning:</strong> <span id="wordMeaning"></span></p>
             <button id="new-word-btn"><i class="fa fa-refresh" aria-hidden="true"></i>  Generate New Word</button>
         </div>
