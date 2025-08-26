@@ -121,6 +121,18 @@ h1 {
     cursor: not-allowed;
 }
 
+.key-enter,
+.key-backspace {
+    flex: 2;
+    min-width: 45px;
+    max-width: 90px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    padding: 0 10px;
+}
+
 .notification {
     position: fixed;
     top: 20px;
@@ -288,6 +300,21 @@ input.box:disabled {
     }
     #keyboard {
         gap: 4px;
+    }
+
+    .key-enter,
+    .key-backspace {
+        flex: 2;
+        min-width: 45px;
+        max-width: 90px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;  
+    }
+
+    .key-enter .enter-text {
+        font-size: 0.65rem;
     }
 
     .notification {
